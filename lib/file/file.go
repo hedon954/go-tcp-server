@@ -1,4 +1,4 @@
-package sync
+package file
 
 import (
 	"fmt"
@@ -7,36 +7,36 @@ import (
 	"syscall"
 )
 
-func checkNotExist(src string) bool {
+func CheckNotExist(src string) bool {
 	_, err := os.Stat(src)
 	return os.IsNotExist(err)
 }
 
-func checkPermission(src string) bool {
+func CheckPermission(src string) bool {
 	_, err := os.Stat(src)
 	return os.IsPermission(err)
 }
 
-func isNotExistMkdir(src string) error {
-	if notExist := checkNotExist(src); notExist {
-		if err := mkDir(src); err != nil {
+func IsNotExistMkdir(src string) error {
+	if notExist := CheckNotExist(src); notExist {
+		if err := MkDir(src); err != nil {
 			return err
 		}
 	}
 	return nil
 }
 
-func mkDir(src string) error {
+func MkDir(src string) error {
 	syscall.Umask(0)
 	return os.MkdirAll(src, os.ModePerm)
 }
 
-func mustOpen(filename, dir string) (*os.File, error) {
-	if checkPermission(dir) {
+func MustOpen(filename, dir string) (*os.File, error) {
+	if CheckPermission(dir) {
 		return nil, fmt.Errorf("permission denied dir: %s", dir)
 	}
 
-	if err := isNotExistMkdir(dir); err != nil {
+	if err := IsNotExistMkdir(dir); err != nil {
 		return nil, fmt.Errorf("error during make dir: %s, err: %s", dir, err)
 	}
 	syscall.Umask(0)

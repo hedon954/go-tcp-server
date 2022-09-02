@@ -1,7 +1,8 @@
-package sync
+package logger
 
 import (
 	"fmt"
+	"go-tcp-server/lib/file"
 	"io"
 	"log"
 	"os"
@@ -56,7 +57,7 @@ func Setup(settings *Settings) {
 		time.Now().Format(settings.TimeFormat),
 		settings.Ext)
 
-	logFile, err := mustOpen(filename, dir)
+	logFile, err = file.MustOpen(filename, dir)
 	if err != nil {
 		log.Fatalf("logging.Setup err: %s", err)
 	}
