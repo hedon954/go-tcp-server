@@ -18,3 +18,11 @@
 [INFO][echo.go:75] 2022/09/03 15:37:42 handler shutting down
 [WARN][echo.go:61] 2022/09/03 15:37:42 read tcp 127.0.0.1:6379->127.0.0.1:54077: use of closed network connection
 [INFO][echo.go:75] 2022/09/03 15:37:42 handler shutting down
+[INFO][server.go:24] 2022/09/03 15:47:26 start to listen 0.0.0.0:6379
+[INFO][server.go:59] 2022/09/03 15:47:30 accepted connection 127.0.0.1:55666
+[INFO][server.go:59] 2022/09/03 15:47:36 accepted connection 127.0.0.1:55679
+[INFO][server.go:39] 2022/09/03 15:50:54 shutting down
+[INFO][echo.go:75] 2022/09/03 15:50:54 handler shutting down
+[WARN][echo.go:61] 2022/09/03 15:50:54 read tcp 127.0.0.1:6379->127.0.0.1:55666: use of closed network connection
+[WARN][echo.go:61] 2022/09/03 15:50:54 read tcp 127.0.0.1:6379->127.0.0.1:55679: use of closed network connection
+[INFO][echo.go:75] 2022/09/03 15:50:54 handler shutting down
