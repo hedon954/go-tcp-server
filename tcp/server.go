@@ -21,7 +21,7 @@ func ListenAndServeWithSignal(cfg *Config, handler tcp.Handler) error {
 	if err != nil {
 		return err
 	}
-	logger.Info("start to listen")
+	logger.Info("start to listen", cfg.Address)
 
 	closeChan := make(chan struct{})
 	go handleSystemSignal(closeChan)
@@ -56,7 +56,7 @@ func ListenAndServe(listener net.Listener, handler tcp.Handler, closeChan <-chan
 		if err != nil {
 			break
 		}
-		logger.Info("accepted connection")
+		logger.Info("accepted connection", conn.RemoteAddr())
 		// add a new connection
 		waitDone.Add(1)
 		go func() {

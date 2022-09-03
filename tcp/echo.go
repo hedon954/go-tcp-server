@@ -23,6 +23,10 @@ type EchoClient struct {
 	Waiting wait.Wait
 }
 
+func MakeHandler() *EchoHandler {
+	return &EchoHandler{}
+}
+
 // Close implements `closer` interface
 func (client *EchoClient) Close() error {
 	client.Waiting.WaitWithTimeout(10 * time.Second)

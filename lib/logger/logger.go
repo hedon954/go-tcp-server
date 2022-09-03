@@ -25,7 +25,7 @@ var (
 	defaultPrefix      = ""
 	defaultCallerDepth = 2
 	logger             *log.Logger
-	mu                 *sync.Mutex
+	mu                 = &sync.Mutex{}
 	logPrefix          = ""
 	levelFlags         = []string{"DEBUG", "INFO", "WARN", "ERROR", "FATAL"}
 )
